@@ -11,5 +11,4 @@
 
 + (void)runSafeGuard;
 
-
 @end

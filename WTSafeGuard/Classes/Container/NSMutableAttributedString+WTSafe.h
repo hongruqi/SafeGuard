@@ -10,4 +10,6 @@
 
 @interface NSMutableAttributedString (WTSafe)
 
++ (void)runSafeGuard;
+
 @end
