@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'WTSafeGuard_Example' do
+  pod 'WTSafeGuard', :path => '../'
+
+  target 'WTSafeGuard_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
