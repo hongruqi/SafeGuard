@@ -1,12 +1,14 @@
 WTSafeGuard can effectively prevent the IOS system application crash
 ### Features
-UI 保持在主线程执行
-KVO
-Target 
-Container
+- Avoid UIKit Called on Non-Main Thread crash
+- Avoid KVO crash
+- Avoid unrecognized selector crash
+- Avoid Container NSArray， NSMutableArray, NSDictionary, NSMutableDictionary, NSSet, NSMutableSet crash
+- Avoid NSString， NSMutableString,NSAttributedString  crash
+- Avoid NSURL,  NSFileManager, NSIndexPath, NSJSONSerialization
 
 ### Requirements
-- IOS 8
+- IOS 8 or later , XCode 7 or later
 
 ### How To Use
 ```Objc
