@@ -38,9 +38,9 @@
 
 /* Begin PBXFileReference section */
 		030185EA5146DDFD46A8437A /* Pods-WTSafeGuard_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTSafeGuard_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-WTSafeGuard_Example/Pods-WTSafeGuard_Example.release.xcconfig"; sourceTree = "<group>"; };
-		1C754D5CF019D2654D1B6309 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1C754D5CF019D2654D1B6309 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1F490A36CC5B8072AE9BD97F /* Pods-WTSafeGuard_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTSafeGuard_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WTSafeGuard_Tests/Pods-WTSafeGuard_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		3BF4D35587D6EA2A888972D7 /* WTSafeGuard.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = WTSafeGuard.podspec; path = ../WTSafeGuard.podspec; sourceTree = "<group>"; };
+		3BF4D35587D6EA2A888972D7 /* WTSafeGuard.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = WTSafeGuard.podspec; path = ../WTSafeGuard.podspec; sourceTree = "<group>"; };
 		579056D8F420226D5D86956D /* Pods_WTSafeGuard_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WTSafeGuard_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* WTSafeGuard_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTSafeGuard_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,7 +63,7 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8FC73BADD260407735D9435C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		8FC73BADD260407735D9435C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9717A6EC96721A160802E892 /* Pods-WTSafeGuard_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTSafeGuard_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WTSafeGuard_Example/Pods-WTSafeGuard_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A4FF251FA1D34EE7F48992FC /* Pods_WTSafeGuard_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WTSafeGuard_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB8C097249951956B3C3656E /* Pods-WTSafeGuard_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTSafeGuard_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WTSafeGuard_Tests/Pods-WTSafeGuard_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -524,6 +524,7 @@
 			baseConfigurationReference = 9717A6EC96721A160802E892 /* Pods-WTSafeGuard_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WTSafeGuard/WTSafeGuard-Prefix.pch";
 				INFOPLIST_FILE = "WTSafeGuard/WTSafeGuard-Info.plist";
@@ -539,6 +540,7 @@
 			baseConfigurationReference = 030185EA5146DDFD46A8437A /* Pods-WTSafeGuard_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WTSafeGuard/WTSafeGuard-Prefix.pch";
 				INFOPLIST_FILE = "WTSafeGuard/WTSafeGuard-Info.plist";
