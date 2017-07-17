@@ -18,6 +18,7 @@
 + (void)runSafeGuard
 {
     NSError *error = nil;
+    [objc_getClass("__NSPlaceholderSet") jr_swizzleMethod:@selector(initWithObjects:count:) withMethod:@selector(WT_initWithObjects: count:) error:&error];
     
     [objc_getClass("__NSSetI") jr_swizzleMethod:@selector(makeObjectsPerformSelector:) withMethod:@selector(WT_safeMakeObjectsPerformSelector:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
@@ -27,12 +28,37 @@
     
     [objc_getClass("__NSSetM") jr_swizzleMethod:@selector(makeObjectsPerformSelector:) withMethod:@selector(WT_safeMakeObjectsPerformSelector:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
-    
+
+    [objc_getClass("__NSSetM") jr_swizzleMethod:@selector(addObject:) withMethod:@selector(WT_addObject:) error:&error];
+    [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
+
     [objc_getClass("__NSSetM") jr_swizzleMethod:@selector(makeObjectsPerformSelector:withObject:) withMethod:@selector(WT_safeMakeObjectsPerformSelector:withObject:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
 }
 
 #pragma mark - Class Private Function
+- (instancetype)WT_initWithObjects:(const id [])objects count:(NSUInteger)cnt
+{
+    for (int i = 0; i < cnt; ++i) {
+        if(objects && objects[i] == nil) {
+            NSAssert(!(objects && objects[i] == nil), @"WT_initWithObjects failed");
+            return nil;
+        }
+    }
+    return [self WT_initWithObjects:objects count:cnt];
+}
+
+- (void)WT_addObject:(id)object;
+{
+    if (!object) {
+        NSAssert(false , @"WT_addObject crash");
+        return;
+    }
+    
+    return [self WT_addObject:object];
+}
+
+
 
 - (void)WT_safeMakeObjectsPerformSelector:(SEL)aSelector
 {
