@@ -49,7 +49,10 @@
     
     [NSURL jr_swizzleMethod:@selector(initWithString:relativeToURL:) withMethod:@selector(WT_safeInitWithString:relativeToURL:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
-    
+
+    [NSURL jr_swizzleClassMethod:@selector(fileURLWithPath:) withClassMethod:@selector(WT_safeFileURLWithPath:) error:&error];
+    [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
+
     [NSURL jr_swizzleMethod:@selector(initFileURLWithPath:) withMethod:@selector(WT_safeInitFileURLWithPath:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
     
@@ -66,6 +69,16 @@
 }
 
 #pragma mark - Class Private Function
+
++ (NSURL *)WT_safeFileURLWithPath:(NSString *)path
+{
+    if(!path) {
+        NSAssert(false , @"WT_safeFileURLWithPath crash");
+        return nil;
+    }
+    
+    return [self WT_safeFileURLWithPath:path];
+}
 
 + (NSURL *)WT_safeFileURLWithPath:(NSString *)path isDirectory:(BOOL)isDir
 {
