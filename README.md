@@ -1,5 +1,6 @@
 WTSafeGuard can effectively prevent the IOS system application crash
 ### Features
+- Avoid NSTimer crash
 - Avoid UIKit Called on Non-Main Thread crash
 - Avoid KVO crash
 - Avoid unrecognized selector crash
@@ -20,3 +21,5 @@ WTSafeGuard can effectively prevent the IOS system application crash
 ```
 ### Installation
 - pod 'WTSafeGuard'
+
+
