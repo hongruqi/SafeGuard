@@ -1,6 +1,6 @@
 PODS:
   - JRSwizzle (1.0)
-  - WTSafeGuard (1.0.3):
+  - WTSafeGuard (1.0.4):
     - JRSwizzle
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
-  WTSafeGuard: 7a3b0105d27e71669c5f1b05aefc6ce4192fa4d1
+  WTSafeGuard: bb1688e3a023e293f5c3c0690af43b1518fd2790
 
 PODFILE CHECKSUM: f38df40f5d74089817f4f9d44c4669ee3c39834a
 

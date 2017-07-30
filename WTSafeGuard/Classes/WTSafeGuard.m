@@ -24,6 +24,7 @@
 #import "NSAttributedString+WTSafe.h"
 #import "NSMutableAttributedString+WTSafe.h"
 #import "WTKVOResource.h"
+#import "NSTimer+WTSafe.h"
 
 @interface WTSafeGuard ()
 
@@ -100,6 +101,9 @@
         
         // NSMutableAttributedString
         [NSMutableAttributedString runSafeGuard];
+        
+        // NSTimer
+        [NSTimer runSafeGuard];
         
     });
 }

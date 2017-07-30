@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'WTSafeGuard/Classes/**/*','WTSafeGuard/Classes/KVO/*','WTSafeGuard/Classes/UI/*', 
-  'WTSafeGuard/Classes/Container/*','WTSafeGuard/Classes/Target/*','WTSafeGuard/Classes/WebView/*'
+  'WTSafeGuard/Classes/Container/*','WTSafeGuard/Classes/Target/*','WTSafeGuard/Classes/WebView/*','WTSafeGuard/Classes/Timer/*'
   # s.resource_bundles = {
   #   'WTSafeGuard' => ['WTSafeGuard/Assets/*.png']
   # }
