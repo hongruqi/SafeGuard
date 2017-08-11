@@ -17,7 +17,6 @@
     NSError *error = nil;
     [WKWebView jr_swizzleMethod:@selector(loadRequest:) withMethod:@selector(wt_safeLoadRequest:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
-    //KVO
     [WKWebView jr_swizzleMethod:@selector(loadFileURL:allowingReadAccessToURL:) withMethod:@selector(wt_safeLoadFileURL:allowingReadAccessToURL:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
     [WKWebView jr_swizzleMethod:@selector(loadHTMLString:baseURL:) withMethod:@selector(wt_safeLoadHTMLString:baseURL:) error:&error];

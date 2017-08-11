@@ -17,13 +17,13 @@
 {
     NSError *error = nil;
     
-    [UIView jr_swizzleClassMethod:@selector(setNeedsLayout) withClassMethod:@selector(WT_safe_setNeedsLayout) error:&error];
+    [UIView jr_swizzleMethod:@selector(setNeedsLayout) withMethod:@selector(WT_safe_setNeedsLayout) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
-    [UIView jr_swizzleClassMethod:@selector(layoutIfNeeded) withClassMethod:@selector(WT_safe_layoutIfNeeded) error:&error];
+    [UIView jr_swizzleMethod:@selector(layoutIfNeeded) withMethod:@selector(WT_safe_layoutIfNeeded) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
-    [UIView jr_swizzleClassMethod:@selector(layoutSubviews) withClassMethod:@selector(WT_safe_layoutSubviews) error:&error];
+    [UIView jr_swizzleMethod:@selector(layoutSubviews) withMethod:@selector(WT_safe_layoutSubviews) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
-    [UIView jr_swizzleClassMethod:@selector(setNeedsUpdateConstraints) withClassMethod:@selector(WT_safe_setNeedsUpdateConstraints) error:&error];
+    [UIView jr_swizzleMethod:@selector(setNeedsUpdateConstraints) withMethod:@selector(WT_safe_setNeedsUpdateConstraints) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
     
 }
