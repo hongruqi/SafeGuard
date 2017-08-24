@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WTSafeGuard'
-  s.version          = '1.1.1'
+  s.version          = '1.2.0'
   s.summary          = 'A short description of WTSafeGuard.'
 
 # This description is used to generate tags and improve search results.
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'WTSafeGuard/Classes/**/*','WTSafeGuard/Classes/KVO/*','WTSafeGuard/Classes/UI/*', 
-  'WTSafeGuard/Classes/Container/*','WTSafeGuard/Classes/Target/*','WTSafeGuard/Classes/WebView/*','WTSafeGuard/Classes/Timer/*'
+  'WTSafeGuard/Classes/Container/*','WTSafeGuard/Classes/Target/*','WTSafeGuard/Classes/Timer/*'
   # s.resource_bundles = {
   #   'WTSafeGuard' => ['WTSafeGuard/Assets/*.png']
   # }

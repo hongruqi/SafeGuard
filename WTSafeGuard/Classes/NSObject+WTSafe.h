@@ -11,5 +11,5 @@
 @interface NSObject (WTSafe)
 
 + (void)runSafeGuard;
-
++ (void)runSafeGuardKVO;
 @end

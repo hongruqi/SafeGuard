@@ -24,7 +24,7 @@
 - (void)WT_safeGetIndexes:(NSUInteger *)indexes range:(NSRange)positionRange
 {
     if (positionRange.location + positionRange.length > self.length) {
-        NSAssert(false , @"WT_safeGetIndexes crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     

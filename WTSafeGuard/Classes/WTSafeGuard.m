@@ -9,8 +9,6 @@
 #import "WTSafeGuard.h"
 #import "WTFakeForwardTargetObject.h"
 #import "NSObject+WTSafe.h"
-#import "NSArray+WTSafe.h"
-#import "NSMutableArray+WTSafe.h"
 #import "NSDictionary+WTSafe.h"
 #import "NSMutableDictionary+WTSafe.h"
 #import "NSSet+WTSafe.h"
@@ -22,7 +20,6 @@
 #import "NSIndexPath+WTSafe.h"
 #import "NSJSONSerialization+WTSafe.h"
 #import "NSAttributedString+WTSafe.h"
-#import "NSMutableAttributedString+WTSafe.h"
 #import "WTKVOResource.h"
 #import "NSTimer+WTSafe.h"
 
@@ -52,59 +49,30 @@
     return self;
 }
 
-+ (void)startSafeGuard
++ (void)startSafeGuardWithType:(WTSafeGuardType)type
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        // 对象
-        [NSObject runSafeGuard];
+        if (type & WTSafeGuardType_MainThreadUI) {
+            [self startGuardMainThread];
+        }
         
-        // 不变数组
-        [NSArray runSafeGuard];
+        if (type & WTSafeGuardType_Foundation){
+            [self startGuardFoundation];
+        }
         
-        // 可变数组
-        [NSMutableArray runSafeGuard];
+        if (type & WTSafeGuardType_NilTarget){
+            [self startGuardNilTarget];
+        }
         
-        // 不变字典
-        [NSDictionary runSafeGuard];
+        if (type & WTSafeGuardType_KVO){
+            [self startGuardKVO];
+        }
         
-        // 可变字典
-        [NSMutableDictionary runSafeGuard];
-        
-        // 不变集合
-        [NSSet runSafeGuard];
-        
-        // 可变集合
-        [NSMutableSet runSafeGuard];
-        
-        // 不变字符串
-        [NSString runSafeGuard];
-        
-        // 可变字符串
-        [NSMutableString runSafeGuard];
-        
-        // URL
-        [NSURL runSafeGuard];
-        
-        // NSFileManager
-        [NSFileManager runSafeGuard];
-        
-        // NSIndexPath
-        [NSIndexPath runSafeGuard];
-        
-        // NSJSONSerialization
-        [NSJSONSerialization runSafeGuard];
-        
-        // NSAttributedString
-        [NSAttributedString runSafeGuard];
-        
-        // NSMutableAttributedString
-        [NSMutableAttributedString runSafeGuard];
-        
-        // NSTimer
-        [NSTimer runSafeGuard];
-        
+        if (type & WTSafeGuardType_Timer) {
+            [self startGuardTimer];
+        }
     });
 }
 
@@ -125,6 +93,42 @@
     return fakeTaget;
 }
 
++ (void)startGuardFoundation
+{
+    [NSDictionary runSafeGuard];
+    [NSMutableDictionary runSafeGuard];
+    [NSSet runSafeGuard];
+    [NSMutableSet runSafeGuard];
+    [NSString runSafeGuard];
+    [NSMutableString runSafeGuard];
+    [NSURL runSafeGuard];
+    [NSFileManager runSafeGuard];
+    [NSIndexPath runSafeGuard];
+    [NSJSONSerialization runSafeGuard];
+    [NSAttributedString runSafeGuard];
+    [NSMutableAttributedString runSafeGuard];
+}
+
++ (void)startGuardMainThread
+{
+    [UIView runSafeGuard];
+}
+
++ (void)startGuardNilTarget
+{
+    [NSObject runSafeGuard];
+}
+
++ (void)startGuardKVO
+{
+    [NSObject runSafeGuardKVO];
+}
+
++ (void)startGuardTimer
+{
+    [NSTimer runSafeGuard];
+}
+
 + (BOOL)logSafeMethodErrorThenSetNil:(NSError **)error
 {
     if (!error) {
@@ -142,6 +146,15 @@
     return YES;
 }
 
-
++ (void)updateGuardCrashClassName:(NSString *)className selector:(NSString *)selector
+{
+    NSArray *stack = [NSThread callStackSymbols];
+    
+    if ([[WTSafeGuard shareInstance].delegate respondsToSelector:@selector(safeGuardCrashMessage:selector:stack:)]) {
+        [[WTSafeGuard shareInstance].delegate safeGuardCrashMessage:className selector:selector stack:stack];
+    }
+    
+    NSLog(@"guard crash [%@ : %@], stack %@",className, selector, stack);
+}
 
 @end

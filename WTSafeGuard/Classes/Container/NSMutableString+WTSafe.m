@@ -42,7 +42,7 @@
 - (void)WT_safeSetString:(NSString *)aString
 {
     if (!aString || ![aString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeSetString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -52,7 +52,7 @@
 - (void)WT_safeAppendString:(NSString *)aString
 {
     if (!aString || ![aString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeAppendString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -62,7 +62,7 @@
 - (void)WT_safeDeleteCharactersInRange:(NSRange)range
 {
     if (range.location > self.length || range.location + range.length > self.length) {
-        NSAssert(false , @"WT_safeDeleteCharactersInRange crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -72,12 +72,12 @@
 - (void)WT_safeInsertString:(NSString *)aString atIndex:(NSUInteger)loc
 {
     if (!aString || ![aString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeInsertString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
     if (loc > self.length) {
-        NSAssert(false , @"WT_safeDeleteCharactersInRange crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -87,12 +87,12 @@
 - (void)WT_safeReplaceCharactersInRange:(NSRange)range withString:(NSString *)aString
 {
     if (range.location > self.length || range.location + range.length > self.length) {
-        NSAssert(false , @"WT_safeReplaceCharactersInRange crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
     if (!aString || ![aString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeReplaceCharactersInRange crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -105,17 +105,17 @@
                                           range:(NSRange)searchRange
 {
     if (!target || ![target isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeReplaceOccurrencesOfString crash");
+       [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return 0;
     }
     
     if (!replacement || ![replacement isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeReplaceOccurrencesOfString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return 0;
     }
     
     if (searchRange.location > self.length || searchRange.location + searchRange.length > self.length) {
-        NSAssert(false , @"WT_safeReplaceOccurrencesOfString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return 0;
     }
     

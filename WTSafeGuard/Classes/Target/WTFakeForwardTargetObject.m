@@ -22,7 +22,6 @@ id fakeIMP(id sender,SEL sel,...){
 #ifdef DEBUG
             NSLog(@"add Fake Selector:[instance %@]", NSStringFromSelector(aSelector));
 #endif
-            NSAssert(false, @"initWithSelector failed");
         }
     }
     

@@ -19,6 +19,7 @@
     NSError *error = nil;
     [NSFileManager jr_swizzleMethod:@selector(enumeratorAtURL:includingPropertiesForKeys:options:errorHandler:) withMethod:@selector(WT_safeEnumeratorAtURL:includingPropertiesForKeys:options:errorHandler:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
+    
 }
 
 #pragma mark - Object Private Function
@@ -26,7 +27,7 @@
 - (NSDirectoryEnumerator *)WT_safeEnumeratorAtURL:(NSURL *)url includingPropertiesForKeys:(NSArray *)keys options:(NSDirectoryEnumerationOptions)mask errorHandler:(BOOL (^)(NSURL *, NSError *))handler
 {
     if(!url) {
-        NSAssert(false, @"WT_safeEnumeratorAtURL crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     

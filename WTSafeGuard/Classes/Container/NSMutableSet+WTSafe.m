@@ -27,7 +27,7 @@
 - (void)WT_safeAddObject:(id)anObject
 {
     if(!anObject) {
-        NSAssert(false , @"WT_safeAddObject crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     

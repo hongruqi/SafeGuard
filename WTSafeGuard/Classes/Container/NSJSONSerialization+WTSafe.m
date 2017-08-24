@@ -26,7 +26,7 @@
 + (NSData *)WT_safeDataWithJSONObject:(id)obj options:(NSJSONWritingOptions)opt error:(NSError **)error
 {
     if (!obj) {
-        NSAssert(false, @"WT_safeEnumeratorAtURL crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     

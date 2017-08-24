@@ -19,6 +19,11 @@
     NSError *error = nil;
     [NSObject jr_swizzleMethod:@selector(forwardingTargetForSelector:) withMethod:@selector(WT_safeForwardingTargetForSelector:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
+}
+
++ (void)runSafeGuardKVO
+{
+    NSError *error = nil;
     //KVO
     [NSObject jr_swizzleMethod:@selector(addObserver:forKeyPath:options:context:) withMethod:@selector(WT_addObserver:forKeyPath:options:context:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];

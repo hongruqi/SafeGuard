@@ -31,7 +31,7 @@
 - (NSAttributedString *)WT_safeAttributedSubstringFromRange:(NSRange)range
 {
     if (range.location > self.length || range.location + range.length > self.length) {
-        NSAssert(nil, @"WT_safeAttributedSubstringFromRange crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     

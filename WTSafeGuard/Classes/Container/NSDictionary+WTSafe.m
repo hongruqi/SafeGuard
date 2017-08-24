@@ -16,7 +16,6 @@
 + (void)runSafeGuard
 {
     NSError *error = nil;
-    
     [NSDictionary jr_swizzleClassMethod:@selector(sharedKeySetForKeys:) withClassMethod:@selector(WT_safeSharedKeySetForKeys:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
     
@@ -32,7 +31,7 @@
 + (id)WT_safeSharedKeySetForKeys:(NSArray *)keys
 {
     if (!keys || ![keys isKindOfClass:[NSArray class]]) {
-        NSAssert(false , @"WT_safeSharedKeySetForKeys crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -44,7 +43,7 @@
     if(![objects isKindOfClass:[NSArray class]] ||
        ![keys isKindOfClass:[NSArray class]] ||
        objects.count != keys.count) {
-        NSAssert(false , @"WT_safeInitWithObjects crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -57,7 +56,7 @@
 {
     for (int i = 0; i < cnt; ++i) {
         if(!keys[i] || !objects[i]) {
-            NSAssert(false , @"WT_safeInitWithObjects crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             return nil;
         }
     }

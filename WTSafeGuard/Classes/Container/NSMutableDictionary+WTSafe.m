@@ -34,7 +34,7 @@
 + (NSMutableDictionary *)WT_safeDictionaryWithSharedKeySet:(id)keyset
 {
     if (!keyset) {
-        NSAssert(false , @"WT_safeDictionaryWithSharedKeySet crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -46,7 +46,7 @@
 - (void)WT_safeSetObject:(id)anObject forKey:(id<NSCopying>)aKey
 {
     if(!anObject || !aKey) {
-        NSAssert(false , @"WT_safeSetObject crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -56,7 +56,7 @@
 - (void)WT_safeRemoveObjectForKey:(id<NSCopying>)aKey
 {
     if(!aKey) {
-        NSAssert(false , @"WT_safeRemoveObjectForKey crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     

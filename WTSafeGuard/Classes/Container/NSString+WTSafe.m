@@ -95,7 +95,7 @@
 + (instancetype)WT_safeStringWithUTF8String:(const char *)bytes
 {
     if (!bytes) {
-        NSAssert(false , @"WT_safeStringWithUTF8String crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -107,7 +107,7 @@
 - (instancetype)WT_safeInitWithString:(NSString *)aString
 {
     if (!aString || ![aString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeInitWithString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -117,7 +117,7 @@
 - (instancetype)WT_safeInitWithUTF8String:(const char *)nullTerminatedCString
 {
     if (!nullTerminatedCString) {
-        NSAssert(false , @"WT_safeStringWithUTF8String crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -127,7 +127,7 @@
 - (instancetype)WT_safeInitWithFormat:(NSString *)format locale:(id)locale arguments:(va_list)argList
 {
     if (!format || ![format isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeInitWithFormat crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -137,7 +137,7 @@
 - (NSString *)WT_safeStringByAppendingString:(NSString *)aString
 {
     if (!aString || ![aString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeStringByAppendingString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -147,7 +147,7 @@
 - (unichar)WT_safeCharacterAtIndex:(NSUInteger)index
 {
     if (index > self.length) {
-        NSAssert(false , @"WT_safeCharacterAtIndex crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return USHRT_MAX;
     }
     
@@ -157,12 +157,12 @@
 - (void)WT_safeGetCharacters:(unichar *)buffer range:(NSRange)range
 {
     if (!buffer) {
-        NSAssert(false , @"WT_safeGetCharacters crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
     if (range.location > self.length || range.location + range.length > self.length) {
-        NSAssert(false , @"WT_safeGetCharacters crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -174,12 +174,12 @@
                                     range:(NSRange)searchRange
 {
     if (!searchSet || ![searchSet isKindOfClass:[NSCharacterSet class]]) {
-        NSAssert(false , @"WT_safeRangeOfCharacterFromSet crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return NSMakeRange(NSNotFound, 0);
     }
     
     if (searchRange.location > self.length || searchRange.location + searchRange.length > self.length) {
-        NSAssert(false , @"WT_safeRangeOfCharacterFromSet crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return NSMakeRange(NSNotFound, 0);
     }
     
@@ -192,12 +192,12 @@
                          locale:(NSLocale *)locale
 {
     if (!searchString || ![searchString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeRangeOfString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return NSMakeRange(NSNotFound, 0);
     }
     
     if (searchRange.location > self.length || searchRange.location + searchRange.length > self.length) {
-        NSAssert(false , @"WT_safeRangeOfString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return NSMakeRange(NSNotFound, 0);
     }
     
@@ -207,7 +207,7 @@
 - (NSString *)WT_safeSubstringFromIndex:(NSUInteger)from
 {
     if (from > self.length) {
-        NSAssert(false , @"WT_safeRangeOfString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -217,7 +217,7 @@
 - (NSString *)WT_safeSubstringWithRange:(NSRange)range
 {
     if (range.location > self.length || range.location + range.length > self.length) {
-        NSAssert(false , @"WT_safeSubstringWithRange crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -227,7 +227,7 @@
 - (NSString *)WT_safeSubstringToIndex:(NSUInteger)to
 {
     if (to > self.length) {
-        NSAssert(false , @"WT_safeSubstringToIndex crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -240,7 +240,7 @@
                    forRange:(NSRange)range
 {
     if (range.location > self.length || range.location + range.length > self.length) {
-        NSAssert(false , @"WT_safeGetLineStart crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     

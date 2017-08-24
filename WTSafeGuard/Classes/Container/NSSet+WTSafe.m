@@ -41,7 +41,7 @@
 {
     for (int i = 0; i < cnt; ++i) {
         if(objects && objects[i] == nil) {
-            NSAssert(!(objects && objects[i] == nil), @"WT_initWithObjects failed");
+            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             return nil;
         }
     }
@@ -51,7 +51,7 @@
 - (void)WT_addObject:(id)object;
 {
     if (!object) {
-        NSAssert(false , @"WT_addObject crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -63,7 +63,7 @@
 - (void)WT_safeMakeObjectsPerformSelector:(SEL)aSelector
 {
     if (!aSelector) {
-        NSAssert(false , @"WT_safeMakeObjectsPerformSelector crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     
@@ -74,7 +74,7 @@
                                withObject:(id)argument
 {
     if (!aSelector) {
-        NSAssert(false , @"WT_safeMakeObjectsPerformSelector crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return;
     }
     

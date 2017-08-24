@@ -73,7 +73,7 @@
 + (NSURL *)WT_safeFileURLWithPath:(NSString *)path
 {
     if(!path) {
-        NSAssert(false , @"WT_safeFileURLWithPath crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -83,7 +83,7 @@
 + (NSURL *)WT_safeFileURLWithPath:(NSString *)path isDirectory:(BOOL)isDir
 {
     if(!path) {
-        NSAssert(false , @"WT_safeFileURLWithPath crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -93,7 +93,7 @@
 + (NSURL *)WT_safeFileURLWithPathComponents:(NSArray<NSString *> *)components
 {
     if(!components) {
-        NSAssert(false , @"WT_safeFileURLWithPathComponents crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -105,7 +105,7 @@
                     relativeToURL:(NSURL *)baseURL
 {
     if (!path || ![path isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeFileURLWithPath crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -117,7 +117,7 @@
 - (instancetype)WT_safeInitWithString:(NSString *)URLString relativeToURL:(NSURL *)baseURL
 {
     if (!URLString || ![URLString isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeInitWithString crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -127,7 +127,7 @@
 - (instancetype)WT_safeInitFileURLWithPath:(NSString *)path
 {
     if (!path || ![path isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeInitFileURLWithPath crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -138,7 +138,7 @@
                              relativeToURL:(NSURL *)baseURL
 {
     if (!path || ![path isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeInitFileURLWithPath crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     
@@ -150,7 +150,7 @@
                              relativeToURL:(NSURL *)baseURL
 {
     if (!path || ![path isKindOfClass:[NSString class]]) {
-        NSAssert(false , @"WT_safeInitFileURLWithPath crash");
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
         return nil;
     }
     

@@ -7,12 +7,18 @@
 //
 
 #import "WTAppDelegate.h"
-
+#import "WTSafeGuard.h"
+@interface WTAppDelegate()<WTSafeGuardDelegate>
+@end
 @implementation WTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [WTSafeGuard startSafeGuardWithType:WTSafeGuardType_NilTarget| WTSafeGuardType_Foundation];
+    [WTSafeGuard shareInstance].delegate = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:nil forKey:nil];
     return YES;
 }
 
@@ -43,4 +49,8 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)safeGuardCrashMessage:(NSString *)className selector:(NSString *)selector stack:(NSArray *)stack
+{
+    
+}
 @end

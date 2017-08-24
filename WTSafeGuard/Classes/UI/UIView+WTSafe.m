@@ -32,7 +32,7 @@
 {
     if(![NSThread isMainThread]){
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSAssert(false, @"WT_safe_setNeedsLayout failed");
+            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_setNeedsLayout];
         });
     }else{
@@ -44,7 +44,7 @@
 {
     if(![NSThread isMainThread]){
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSAssert(false, @"WT_safe_layoutIfNeeded failed");
+            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_layoutIfNeeded];
         });
     }else{
@@ -56,7 +56,7 @@
 {
     if(![NSThread isMainThread]){
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSAssert(false, @"WT_safe_layoutSubviews failed");
+            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_layoutSubviews];
         });
     }else{
@@ -68,7 +68,7 @@
 {
     if(![NSThread isMainThread]){
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSAssert(false, @"WT_safe_setNeedsUpdateConstraints failed");
+            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_setNeedsUpdateConstraints];
         });
     }else{
