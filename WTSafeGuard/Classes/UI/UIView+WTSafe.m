@@ -30,49 +30,45 @@
 
 - (void)WT_safe_setNeedsLayout
 {
-    if(![NSThread isMainThread]){
+    if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue())) == 0) {
+        [self WT_safe_setNeedsLayout];
+    } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_setNeedsLayout];
         });
-    }else{
-        [self WT_safe_setNeedsLayout];
     }
 }
 
 - (void)WT_safe_layoutIfNeeded
 {
-    if(![NSThread isMainThread]){
+    if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue())) == 0) {
+        [self WT_safe_layoutIfNeeded];
+    } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_layoutIfNeeded];
         });
-    }else{
-        [self WT_safe_layoutIfNeeded];
     }
 }
 
 - (void)WT_safe_layoutSubviews
 {
-    if(![NSThread isMainThread]){
+    if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue())) == 0) {
+        [self WT_safe_layoutSubviews];
+    } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_layoutSubviews];
         });
-    }else{
-        [self WT_safe_layoutSubviews];
     }
 }
 
 - (void)WT_safe_setNeedsUpdateConstraints
 {
-    if(![NSThread isMainThread]){
+    if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue())) == 0) {
+        [self WT_safe_setNeedsUpdateConstraints];
+    } else {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
             [self WT_safe_setNeedsUpdateConstraints];
         });
-    }else{
-        [self WT_safe_setNeedsUpdateConstraints];
     }
 }
 @end
