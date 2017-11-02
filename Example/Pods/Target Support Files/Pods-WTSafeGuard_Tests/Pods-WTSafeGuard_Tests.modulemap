@@ -1,0 +1,6 @@
+framework module Pods_WTSafeGuard_Tests {
+  umbrella header "Pods-WTSafeGuard_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

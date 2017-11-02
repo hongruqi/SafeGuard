@@ -27,6 +27,8 @@
     
     [objc_getClass("__NSDictionaryM") jr_swizzleMethod:@selector(removeObjectForKey:) withMethod:@selector(WT_safeRemoveObjectForKey:) error:&error];
     [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
+    [objc_getClass("__NSDictionaryM") jr_swizzleMethod:@selector(setValue:forKey:) withMethod:@selector(WT_safeSetValue:forKey:) error:&error];
+    [WTSafeGuard logSafeMethodErrorThenSetNil:&error];
 }
 
 #pragma mark - Class Private Function
@@ -61,6 +63,16 @@
     }
     
     [self WT_safeRemoveObjectForKey:aKey];
+}
+
+- (void)WT_safeSetValue:(id)anObject forKey:(id<NSCopying>)aKey
+{
+    if(!aKey) {
+        [WTSafeGuard updateGuardCrashClassName:NSStringFromClass(self.class) selector:NSStringFromSelector(_cmd)];
+        return;
+    }
+    
+    [self WT_safeSetValue:anObject forKey:aKey];
 }
 
 @end
